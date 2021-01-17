@@ -14,12 +14,14 @@ class CreateCartapiosTable extends Migration
     public function up()
     {
         Schema::create('cartapios', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('tipo');
             $table->string('descricao');
-            $table->number('preco');
-            $table->foreign('clientes_id')->references('id')->on('clientes');
-            $table->foreing('funcionarios_id')->references('id')->on('funcionarios');
+            $table->decimal('preco', 10, 2);
+            $table->integer('clientes_id')->unsigned();
+            $table->foreign('clientes_id')->references('id')->on('cartapios');
+            $table->integer('funcionarios_id')->unsigned();
+            $table->foreign('funcionarios_id')->references('id')->on('cartapios');
             $table->timestamps();
         });
     }

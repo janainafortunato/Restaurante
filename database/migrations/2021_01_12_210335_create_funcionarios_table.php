@@ -14,14 +14,14 @@ class CreateFuncionariosTable extends Migration
     public function up()
     {
         Schema::create('funcionarios', function (Blueprint $table) {
-            $table->id();
-            $table->string('nome');
+            $table->increments('id');
+            $table->string('name');
             $table->string('email');
-            $table->int('cpf');
-            $table->int('rg');
+            $table->integer('cpf');
+            $table->integer('rg');
             $table->string('funcao');
             $table->string('endereco');
-            $table->numer('salario');
+            $table->decimal('salario', 10, 2);
             $table->date('data_admissao');
             $table->date('data_demissao');
             $table->timestamps();
